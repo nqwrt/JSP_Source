@@ -36,7 +36,7 @@ public class MemberDAO {
 	
 	public ArrayList<MemberDTO> memberSelect() {
 		
-		ArrayList<MemberDTO> dtos = new ArrayList<MemberDTO>();
+		//ArrayList<MemberDTO> dtos = new ArrayList<MemberDTO>();
 		
 		Connection con =null;
 		Statement stmt = null;
@@ -46,7 +46,7 @@ public class MemberDAO {
 //			con = DriverManager.getConnection(url, uid, upw);
 			con = dataSource.getConnection();
 			stmt = con.createStatement();
-			rs = stmt.executeQuery("select * from member");
+			rs = stmt.executeQuery("select * from emp");
 			
 			while (rs.next()) {
 				String name = rs.getString("name");
@@ -58,7 +58,7 @@ public class MemberDAO {
 				String gender = rs.getString("gender");
 				
 				MemberDTO dto = new MemberDTO(name, id, pw, phone1, phone2, phone3, gender);
-				dtos.add(dto);
+				//dtos.add(dto);
 			}
 			
 		} catch (Exception e) {

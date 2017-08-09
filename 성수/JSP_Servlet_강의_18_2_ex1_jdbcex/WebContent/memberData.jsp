@@ -13,7 +13,7 @@
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
 		String uid = "scott";
 		String upw = "tiger";
-		String query = "select * from member";
+		String query = "select * from emp";
 	%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,12 +32,14 @@
 			resultSet = statement.executeQuery(query);	//select * from member
 			
 			while(resultSet.next()){
-				String id = resultSet.getString("id");
-				String pw = resultSet.getString("pw");
-				String name = resultSet.getString("name");
-				String phone = resultSet.getString("phone");
+				String id = resultSet.getString("hiredate");
 				
-				out.println("아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 전화번호 : " + phone + "<br />");
+				//String pw = resultSet.getString("pw");
+				//String name = resultSet.getString("name");
+				//String phone = resultSet.getString("phone");
+				
+				//out.println("아이디 : " + id + ", 비밀번호 : " + pw + ", 이름 : " + name + ", 전화번호 : " + phone + "<br />");
+				out.println(id);
 			}
 			
 		} catch(Exception e) {
