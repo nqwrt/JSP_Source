@@ -12,9 +12,9 @@ import javax.sql.DataSource;
 
 public class MemberDAO {
 
-//	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-//	private String uid = "scott";
-//	private String upw = "tiger";
+	//private String url = "jdbc:oracle:thin:@localhost:1521:xe";
+	//private String uid = "scott";
+	//private String upw = "tiger";
 	
 	private DataSource dataSource;
 	
@@ -28,7 +28,7 @@ public class MemberDAO {
 		
 		try {
 			Context context = new InitialContext();
-			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/Oracle11g");
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/oracle");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -36,28 +36,31 @@ public class MemberDAO {
 	
 	public ArrayList<MemberDTO> memberSelect() {
 		
-		//ArrayList<MemberDTO> dtos = new ArrayList<MemberDTO>();
+		ArrayList<MemberDTO> dtos = new ArrayList<MemberDTO>();
 		
 		Connection con =null;
 		Statement stmt = null;
 		ResultSet rs = null;
 		
 		try {
-//			con = DriverManager.getConnection(url, uid, upw);
+			//con = DriverManager.getConnection(url, uid, upw);
+			
 			con = dataSource.getConnection();
 			stmt = con.createStatement();
 			rs = stmt.executeQuery("select * from emp");
 			
 			while (rs.next()) {
-				String name = rs.getString("name");
-				String id = rs.getString("id");
+				String name = rs.getString("ename");
+/*				String id = rs.getString("id");
 				String pw = rs.getString("pw");
 				String phone1 = rs.getString("phone1");
 				String phone2 = rs.getString("phone2");
 				String phone3 = rs.getString("phone3");
 				String gender = rs.getString("gender");
+				*/
 				
-				MemberDTO dto = new MemberDTO(name, id, pw, phone1, phone2, phone3, gender);
+				MemberDTO dto = new MemberDTO();
+				dto.setName(name);
 				//dtos.add(dto);
 			}
 			

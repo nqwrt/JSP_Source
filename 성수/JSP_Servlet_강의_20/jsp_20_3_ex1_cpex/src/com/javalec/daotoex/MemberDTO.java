@@ -20,6 +20,10 @@ public class MemberDTO {
 		this.gender = gender;
 	}
 
+	public MemberDTO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getName() {
 		return name;
 	}
